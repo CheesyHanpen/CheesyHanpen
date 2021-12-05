@@ -8,6 +8,7 @@
     <textarea v-model="review" placeholder="Comment..."></textarea>
     <p>ロケーション</p>
     <GmapMap
+      class="map"
       :center="{ lat: 35.717, lng: 139.731 }"
       :zoom="10"
       map-type-id="terrain"
@@ -36,6 +37,14 @@ export default {
     return {
       title: "",
       review: "",
+      // markers: [
+      //   {
+      //     position: {
+      //       lat: 10.0,
+      //       lng: 10.0,
+      //     },
+      //   },
+      // ],
     }
   },
 
@@ -52,3 +61,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.map {
+  margin: 0 auto;
+}
+</style>

@@ -13,7 +13,7 @@ new Vue({
 
 Vue.use(GmapVue, {
   load: {
-    key: "AIzaSyCDGLbnGdBRT-_DTIPlCm5I8SNbWSzgb-Q",
+    key: process.env.VUE_APP_MAP_API_KEY,
     libraries: "places",
   },
 

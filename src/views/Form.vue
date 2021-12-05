@@ -6,6 +6,23 @@
     <input v-model="title" placeholder="Title..." />
     <p>レビュー</p>
     <textarea v-model="review" placeholder="Comment..."></textarea>
+    <p>ロケーション</p>
+    <GmapMap
+      class="map"
+      :center="{ lat: 35.717, lng: 139.731 }"
+      :zoom="10"
+      map-type-id="terrain"
+      style="width: 500px; height: 300px"
+    >
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center = m.position"
+      />
+    </GmapMap>
     <p>投稿</p>
     <button v-on:click="post">投稿</button>
   </div>
@@ -20,6 +37,14 @@ export default {
     return {
       title: "",
       review: "",
+      // markers: [
+      //   {
+      //     position: {
+      //       lat: 10.0,
+      //       lng: 10.0,
+      //     },
+      //   },
+      // ],
     }
   },
 
@@ -36,3 +61,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.map {
+  margin: 0 auto;
+}
+</style>

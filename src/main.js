@@ -6,11 +6,6 @@ import router from "./router"
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount("#app")
-
 Vue.use(GmapVue, {
   load: {
     key: process.env.VUE_APP_MAP_API_KEY,
@@ -19,3 +14,8 @@ Vue.use(GmapVue, {
 
   installComponents: true,
 })
+
+new Vue({
+  router,
+  render: (h) => h(App),
+}).$mount("#app")

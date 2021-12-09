@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <p>
+      {{ this.markers }}
+      {{ this.markers[0].position }}
+    </p>
     <GmapMap
       :center="{ lat: 35.717, lng: 139.731 }"
       :zoom="10"
@@ -18,4 +22,37 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import firebase from "firebase"
+
+export default {
+  name: "home",
+  data() {
+    return {
+      markers: [
+        {
+          position: {
+            lat: 35.717,
+            lng: 139.731,
+          },
+        },
+      ],
+    }
+  },
+
+  created() {
+    firebase
+      .firestore()
+      .collection("posts")
+      .get()
+      .then((snapshot) => {
+        const array = []
+        snapshot.forEach((doc) => {
+          array.push(doc.data())
+        })
+        this.markers = array
+      })
+    // console.log(this.markers)
+  },
+}
+</script>

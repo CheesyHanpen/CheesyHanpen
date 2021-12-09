@@ -20,7 +20,7 @@
         v-for="(m, index) in markers"
         :position="m.position"
         :clickable="true"
-        :draggable="true"
+        :draggable="false"
         @click="center = m.position"
       />
     </GmapMap>
@@ -34,7 +34,7 @@
 import firebase from "firebase"
 
 export default {
-  name: "form",
+  name: "postForm",
   data() {
     return {
       title: "",
@@ -42,8 +42,8 @@ export default {
       markers: [
         {
           position: {
-            lat: "35.717",
-            lng: "139.731",
+            lat: 35.717,
+            lng: 139.731,
           },
         },
       ],
@@ -52,18 +52,16 @@ export default {
 
   methods: {
     post() {
-      firebase
-        .firestore()
-        .collection("posts")
-        .add({
-          title: this.title,
-          review: this.review,
-          geopoint: new firebase.firestore.GeoPoint(
-            Number(this.markers[0].position["lat"]),
-            Number(this.markers[0].position["lng"])
-          ),
-          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        })
+      firebase.firestore().collection("posts").add({
+        title: this.title,
+        review: this.review,
+        // position: new firebase.firestore.GeoPoint(
+        //   Number(this.markers[0].position["lat"]),
+        //   Number(this.markers[0].position["lng"])
+        // ),
+        position: this.markers[0].position,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
       this.title = ""
       this.review = ""
       this.markers[0].position["lat"] = 0

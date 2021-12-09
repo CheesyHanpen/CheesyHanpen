@@ -83,4 +83,8 @@ export default {
 .map {
   margin: 0 auto;
 }
+.postform {
+  text-align: center;
+  padding: 50px;
+}
 </style>

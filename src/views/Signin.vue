@@ -60,6 +60,7 @@ a {
 }
 .signin {
   margin-top: 20px;
+  padding: 50px;
 
   display: flex;
   flex-flow: column nowrap;
@@ -70,4 +71,5 @@ input {
   margin: 10px 0;
   padding: 10px;
 }
+
 </style>

@@ -56,3 +56,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.home{
+  padding: 50px;
+}
+</style>

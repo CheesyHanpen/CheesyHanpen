@@ -57,6 +57,7 @@ a {
 }
 .signup {
   margin-top: 20px;
+  padding: 50px;
 
   display: flex;
   flex-flow: column nowrap;

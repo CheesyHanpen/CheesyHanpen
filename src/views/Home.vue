@@ -1,24 +1,36 @@
 <template>
   <div class="home">
-    <p>
-      {{ this.markers }}
-      {{ this.markers[0].position }}
-    </p>
     <GmapMap
       :center="{ lat: 35.717, lng: 139.731 }"
       :zoom="10"
       map-type-id="terrain"
       style="width: 1500px; height: 700px"
     >
+      <!-- <GmapInfoWindow
+        :options="infoOptions"
+        :position="infoWindowPos"
+        :opened="infoWinOpen"
+        @closeclick="infoWinOpen = false"
+      >
+        <p>{{ this.markers }}!!</p>
+      </GmapInfoWindow> -->
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
         :position="m.position"
         :clickable="true"
-        :draggable="true"
-        @click="center = m.position"
-      />
+        :draggable="false"
+        :label="m.label"
+        @click="openWindow(m)"
+      >
+      </GmapMarker>
     </GmapMap>
+    <!-- v-forで無理やり表示しました -->
+    <p v-for="(info, index) in infos" :key="index" class="info">
+      <!-- {{ this.markers }}
+      {{ this.markers[0].position }} -->
+      タイトル：{{ info["title"] }} | レビュー：{{ info["review"] }}
+    </p>
   </div>
 </template>
 
@@ -37,7 +49,14 @@ export default {
           },
         },
       ],
+      infos: [],
     }
+  },
+  methods: {
+    openWindow(value) {
+      this.infos.push(value)
+      console.log(this.infos)
+    },
   },
 
   created() {
@@ -58,7 +77,20 @@ export default {
 </script>
 
 <style>
-.home{
+.home {
   padding: 50px;
+}
+
+.info {
+  /* width: 500px; */
+  margin: 30px auto;
+  /* text-align: center; */
+  position: relative;
+  background: #f4a006;
+  -webkit-box-shadow: 0px 0px 0px 5px #f4a006;
+  box-shadow: 0px 0px 0px 5px #f4a006;
+  border: dashed 2px #fff;
+  padding: 1em 1em;
+  color: #fff;
 }
 </style>

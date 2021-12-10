@@ -12,25 +12,24 @@
 
 <style>
 #app {
-    list-style: none;
-    display: flex;
-
+  list-style: none;
+  display: flex;
 }
 #nav {
-    width: 100%;
-    text-align: center;
-    background-color: rgba(98, 157, 227, 1);
-    height: 50px;
-    line-height: 50px;
-    margin-right: 2px;
-    position: fixed;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(98, 157, 227, 1);
+  height: 50px;
+  line-height: 50px;
+  margin-right: 2px;
+  position: fixed;
+  z-index: 10;
 }
 .routerlink {
-    text-decoration: none;
-    text-align: right;
-    color: white;
-    font-weight: bold;
-    padding: 20px;
+  text-decoration: none;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
 }
-
 </style>

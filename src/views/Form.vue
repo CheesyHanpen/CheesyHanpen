@@ -1,12 +1,10 @@
 <template>
-  <div class="Postform">
-    <h2>投稿フォーム</h2>
-
-    <p>タイトル</p>
+  <div class="post-form">
+    <p>Title</p>
     <input v-model="title" placeholder="Title..." />
-    <p>レビュー</p>
+    <p>Review</p>
     <textarea v-model="review" placeholder="Comment..."></textarea>
-    <p>ロケーション</p>
+    <p>Location</p>
     <GmapMap
       class="map"
       @click="place($event)"
@@ -25,8 +23,7 @@
       />
     </GmapMap>
     <p>{{ this.markers[0].position }}</p>
-    <p>投稿</p>
-    <button v-on:click="post">投稿</button>
+    <button v-on:click="post">POST</button>
   </div>
 </template>
 
@@ -80,10 +77,33 @@ export default {
 </script>
 
 <style scoped>
+input,
+textarea {
+  width: 500px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: double 4px #67c5ff;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+button:hover {
+  background: #fffbef;
+}
+
+textarea {
+  height: 200px;
+}
+
 .map {
   margin: 0 auto;
 }
-.postform {
+.post-form {
+  width: 100%;
   text-align: center;
   padding: 50px;
 }

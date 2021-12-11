@@ -5,14 +5,20 @@ import Post from "../views/Post.vue"
 import Form from "../views/Form.vue"
 import Signin from "../views/Signin"
 import Signup from "../views/Signup"
+import firebase from "firebase"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: "*",
+    redirect: "signin",
+  },
+  {
     path: "/",
     name: "Home",
     component: Home,
+    meta: { requiresAuth: true },
   },
   {
     path: "/about",
@@ -49,6 +55,23 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  let requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+  let currentUser = firebase.auth().currentUser
+  if (requiresAuth) {
+    if (!currentUser) {
+      next({
+        path: "/signin",
+        query: { redirect: to.fullPath },
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <vav>
+      <img src="../assets/tabi.jpg" class="icon" />
+      <h2 class="image-title">しぇあたび</h2>
+      <h4 class="image-desc">旅の記録を<br />シェアしよう</h4>
       <h1>About</h1>
       <h3>1,あなたの旅の記録を投稿しよう</h3>
       <p>
@@ -14,7 +17,7 @@
       :center="{ lat: 35.717, lng: 139.731 }"
       :zoom="10"
       map-type-id="terrain"
-      style="width: 90%; height: 700px"
+      style="width: 90%; height: 500px"
     >
       <!-- <GmapInfoWindow
         :options="infoOptions"
@@ -64,8 +67,7 @@ export default {
   },
   methods: {
     openWindow(value) {
-      this.infos.push(value)
-      console.log(this.infos)
+      this.infos.unshift(value)
     },
   },
 
@@ -93,6 +95,35 @@ p {
   text-align: center;
 }
 
+.icon {
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  /* text-align: center; */
+  margin-top: 100px;
+  width: 800px;
+  height: 300px;
+}
+
+.image-title {
+  position: absolute;
+  top: 140px;
+  left: 370px;
+  font-size: 50px;
+  color: #fff;
+}
+
+.image-desc {
+  position: absolute;
+  top: 180px;
+  left: 750px;
+  font-size: 60px;
+  color: #fff;
+  opacity: 0.8;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 .home {
   width: 100%;
   padding: 50px;
@@ -100,7 +131,7 @@ p {
 
 .info {
   /* width: 500px; */
-  margin: 30px auto;
+  margin: 10px auto;
   /* text-align: center; */
   position: relative;
   background: #f4a006;
@@ -112,6 +143,6 @@ p {
 }
 
 .map {
-  margin: 100px auto;
+  margin: 40px auto;
 }
 </style>

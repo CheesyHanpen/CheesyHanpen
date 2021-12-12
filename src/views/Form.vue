@@ -24,13 +24,18 @@
     </GmapMap>
     <p>{{ this.markers[0].position }}</p>
     <button v-on:click="post">POST</button>
+    <Signout class="signoutbutton" />
   </div>
 </template>
 
 <script>
 import firebase from "firebase"
+import Signout from "../components/Signout.vue"
 
 export default {
+  components: {
+    Signout,
+  },
   name: "postForm",
   data() {
     return {
@@ -106,5 +111,9 @@ textarea {
   width: 100%;
   text-align: center;
   padding: 50px;
+}
+.signoutbutton {
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -41,13 +41,18 @@
       {{ this.markers[0].position }} -->
       タイトル：{{ info["title"] }} | レビュー：{{ info["review"] }}
     </p>
+    <Signout class="signoutbutton" />
   </div>
 </template>
 
 <script>
 import firebase from "firebase"
+import Signout from "../components/Signout.vue"
 
 export default {
+  components: {
+    Signout,
+  },
   name: "home",
   data() {
     return {
@@ -113,5 +118,10 @@ p {
 
 .map {
   margin: 100px auto;
+}
+
+.signoutbutton {
+  display: flex;
+  justify-content: center;
 }
 </style>

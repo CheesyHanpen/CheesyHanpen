@@ -94,7 +94,7 @@ input {
 
 button {
   margin-top: 30px;
-  width: 70px;
+  width: 90px;
   background: #ffffff;
   border: 3px solid rgba(43, 192, 40, 0.51);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
